@@ -1,23 +1,81 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T11:09:52.274Z",
-  "summary": "The diff implements both requested frontend behaviors: (1) accepted-state now always shows a happiest puppy GIF, and (2) the sad puppy sequence loops on repeated NO clicks via modulo cycling. No clear missing requirements are evident from the provided diff summary, though some acceptance-criteria text/animation invariants cannot be fully verified due to truncation.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-10T12:19:50.826Z",
+  "summary": "The diff clearly adds a subtle floating-hearts background component (REQ-18). Other requested polish effects (puppy glow pulse, question text fade-in only on initial invitation render, NO-button moving shadow, puppy idle wiggle, sparkle pop on every puppy image change, ambient gradient pulse, and question text glow) are not confidently verifiable from the provided truncated diffs, though some scaffolding (CSS keyframes and App state like sparkleKey/hasEnteredInvitation) suggests partial work.",
+  "missing_requirements": [
     {
-      "description": "Updated/added project metadata summaries (frontend-file-summaries.txt and project_state.json) beyond the requested UI behavior changes.",
-      "reason": "BuildRequest only asked for two UI behavior adjustments (REQ-12/REQ-13) and explicitly requested minimizing unrelated changes; these metadata summary updates are not requested requirements.",
+      "id": "REQ-19",
+      "requirement": "Add a soft pulsing glow outline around the puppy image on the invitation screen.",
+      "reason": "No diff evidence shows a glow/halo being applied to the puppy image element across all puppy states; the relevant App.tsx rendering/styling for the puppy is truncated and no explicit puppy-glow class/style is shown.",
       "evidence": [
-        "frontend-file-summaries.txt",
-        "project_state.json"
+        "frontend/src/App.tsx (truncated)",
+        "frontend/src/index.css (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "Add a smooth fade-in animation for the main Valentine question text when the invitation screen is shown, only on initial render of the invitation screen.",
+      "reason": "index.css defines fade/text-slide-in animations, but the truncated App.tsx snippet does not show these classes applied specifically to the main question text nor logic restricting it to initial invitation render (only a hasEnteredInvitation flag is shown without usage).",
+      "evidence": [
+        "frontend/src/index.css (truncated)",
+        "frontend/src/App.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "requirement": "Add a very soft shadow/grounding effect under the moving “no” button after the first NO interaction.",
+      "reason": "No diff evidence shows an added shadow/drop-shadow style being conditionally applied to the NO button when it becomes fixed-position/moving; App.tsx snippet covers movement logic but not styling changes.",
+      "evidence": [
+        "frontend/src/App.tsx (truncated)",
+        "frontend/src/index.css (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "requirement": "Add a subtle idle wiggle/bounce animation to the initial happy puppy (before any NO clicks), reduced/disabled after NO clicks.",
+      "reason": "No diff evidence shows a wiggle/bounce animation class being applied when noClickCount is 0 and removed/changed when noClickCount > 0; puppy rendering portion is truncated.",
+      "evidence": [
+        "frontend/src/App.tsx (truncated)",
+        "frontend/src/index.css (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "requirement": "Add a small sparkle ‘pop’ animation around the puppy each time its mood image changes (NO clicks and YES acceptance).",
+      "reason": "A SparklePop component is added and App.tsx increments sparkleKey on NO and YES, but the diff snippet does not show SparklePop being rendered/positioned around the puppy and keyed to sparkleKey, so the end-to-end sparkle trigger on each image change is not verifiable from the truncated diff.",
+      "evidence": [
+        "frontend/src/components/SparklePop.tsx",
+        "frontend/src/App.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "requirement": "Add a very gentle pulse/shift effect to the existing gradient background without changing the gradient color set or NO-click gradient cycling behavior.",
+      "reason": "The gradients array and NO-click cycling logic are visible, but there is no diff evidence showing an ambient background animation being applied to the page background (e.g., animated background-position/filters) while preserving the existing gradient swap behavior; related CSS is truncated before any such class can be confirmed.",
+      "evidence": [
+        "frontend/src/App.tsx (truncated)",
+        "frontend/src/index.css (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-25",
+      "requirement": "Add a soft glow around the main Valentine question text on the invitation screen.",
+      "reason": "No diff evidence shows a text-shadow/glow style applied to the invitation screen’s main question text; App.tsx text markup/styling is truncated and CSS excerpt doesn’t show a dedicated text-glow utility/class being used on that element.",
+      "evidence": [
+        "frontend/src/App.tsx (truncated)",
+        "frontend/src/index.css (truncated)"
       ]
     }
   ],
-  "confidence": 0.74,
+  "hallucinated_features": [],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
     "frontend/src/App.tsx",
+    "frontend/src/components/FloatingHeartsBackground.tsx",
+    "frontend/src/components/SparklePop.tsx",
+    "frontend/src/index.css",
     "project_state.json"
   ]
 }

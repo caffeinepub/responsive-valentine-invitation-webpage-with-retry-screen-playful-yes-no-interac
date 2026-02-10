@@ -1,41 +1,181 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Swap accepted-state puppy media and loop sad puppy sequence on NO clicks",
+  "title": "Valentine invitation visual polish animations (hearts, glows, sparkles, subtle motion)",
   "requirements": [
     {
-      "id": "REQ-12",
-      "summary": "Show a dedicated happiest puppy image/GIF in the reveal area when the invitation is accepted, independent of prior NO-click state.",
+      "id": "REQ-18",
+      "summary": "Add subtle floating heart bubbles drifting upward behind the invitation card content.",
       "acceptanceCriteria": [
-        "After clicking “yes”, the puppy media shown is always the happiest puppy asset (not affected by prior NO clicks).",
-        "All existing accepted-state behavior remains unchanged: the reveal text stays exactly “now u're my personal marad, no backoffing”, buttons hide after ~1s, confetti lasts ~10s, heart shower remains visible behind/within the message area."
+        "When on the invitation screen, small semi-transparent hearts continuously drift upward behind the main card content.",
+        "The floating hearts effect is subtle (low opacity, slow speed) and does not block interaction with buttons (pointer-events disabled).",
+        "The effect remains within the existing soft red/white Valentine aesthetic."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/puppy-happiest.dim_512x512.gif",
+          "path": "frontend/src/components/FloatingHeartsBackground.tsx",
           "operation": "create",
-          "description": "Add the required happiest puppy media asset so it can be displayed in the accepted/reveal state (required filename: frontend/public/assets/generated/puppy-happiest.dim_512x512.gif)."
+          "description": "Create a lightweight, pointer-events-none background overlay component that renders a small number of randomly positioned heart bubbles and animates them upward slowly (subtle opacity/scale) for the invitation screen."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add CSS keyframes and utility classes for the floating heart bubble animation (slow upward drift, low opacity), ensuring it is performant (transform/opacity only) and visually subtle."
         },
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Update the invitation puppy media selection so that when invitationState is 'accepted' the <img> always uses the happiest asset (frontend/public/assets/generated/puppy-happiest.dim_512x512.gif), without changing any other accepted-state text, timing, confetti, or heart shower behavior."
+          "description": "Wire FloatingHeartsBackground into the invitation screen layout behind the main card content (layered via relative/absolute + z-index) with pointer-events disabled so buttons remain fully interactive."
         }
       ]
     },
     {
-      "id": "REQ-13",
-      "summary": "Loop the sad puppy images on repeated NO clicks by cycling through the sad variants indefinitely while keeping other NO behaviors unchanged.",
+      "id": "REQ-19",
+      "summary": "Add a soft pulsing glow/halo around the puppy image across all invitation puppy states.",
       "acceptanceCriteria": [
-        "With 0 NO clicks, the initial puppy remains the existing happy puppy image.",
-        "With 1+ NO clicks, the puppy image cycles through the existing sad images in a repeating loop (e.g., sad-1 → sad-2 → sad-3 → saddest → sad-1 …).",
-        "The looping change does not alter other NO-click behaviors: the NO button still jumps after the first NO click and continues to jump on subsequent NO clicks; the background gradient still cycles on each NO click."
+        "The puppy image has a visible soft glow/halo that gently pulses over time.",
+        "The glow does not cause layout shift and remains centered around the circular puppy image.",
+        "The glow works for all puppy states (initial happy animated puppy, sad loop images, and happiest GIF on acceptance)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add CSS utilities for a pulsing halo effect around the puppy container (e.g., using a pseudo-element or wrapper with box-shadow/filter + transform/opacity animation) without affecting layout."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap the puppy <img> in a dedicated glow wrapper element and apply the pulsing glow class consistently for all puppy images returned by getPuppyImage(), ensuring no layout shift."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Animate the main Valentine question text with a smooth one-time fade/slide on invitation screen entry.",
+      "acceptanceCriteria": [
+        "When transitioning to the invitation screen, the main question text animates in with a smooth fade/slide (no abrupt appearance).",
+        "The animation plays only on initial render of the invitation screen (not repeatedly on every state change like NO clicks)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Adjust the 'asking' state puppy image logic to (1) keep the existing happy asset for 0 NO clicks (frontend/public/assets/generated/puppy-happy.dim_512x512.png) and (2) loop through the existing sad assets on 1+ NO clicks using modulo over the sad set (frontend/public/assets/generated/puppy-sad-1.dim_512x512.png, frontend/public/assets/generated/puppy-sad-2.dim_512x512.png, frontend/public/assets/generated/puppy-sad-3.dim_512x512.png, frontend/public/assets/generated/puppy-saddest.dim_512x512.png), without changing NO button jumping or gradient cycling behavior."
+          "description": "Add a one-time animation trigger for the invitation screen’s main question text (e.g., track first time the invitation screen is shown) so the fade/slide plays only on initial screen entry and not on NO click state changes."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add (or reuse/extend) a dedicated CSS animation utility for the question text fade/slide-in tuned for readability and subtlety, distinct from the generic container fade if needed."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Add a soft grounding shadow effect under the moving fixed-position NO button after the first NO interaction.",
+      "acceptanceCriteria": [
+        "After the first NO interaction (when the NO button becomes fixed-position and moves), it has an additional soft shadow or drop-shadow that makes it feel lifted.",
+        "The shadow remains consistent as the button moves and does not reduce readability of the button label.",
+        "The NO button remains fully clickable while moving."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply an additional visual-only shadow class to the NO button only in the moving (fixed-position) state (noClickCount > 0) without changing click/move logic."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add a subtle elevated shadow utility (e.g., soft drop-shadow/box-shadow) suitable for a moving button, ensuring label contrast remains clear."
+        }
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "summary": "Add a subtle idle wiggle/bounce animation to the initial happy puppy (noClickCount = 0) and reduce/disable it after NO clicks.",
+      "acceptanceCriteria": [
+        "When noClickCount is 0 (initial happy animated puppy), the puppy element has a subtle wiggle/bounce idle animation.",
+        "Once the user starts clicking NO (sad images), the idle animation is reduced or disabled so it does not conflict with the ‘sad’ mood.",
+        "No layout shift occurs during the animation."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add a subtle idle wiggle/bounce animation class for the puppy (transform-only, low amplitude) designed to avoid layout shift."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Conditionally apply the idle wiggle/bounce class only when invitationState is asking and noClickCount is 0, and remove/disable it for sad/accepted states to match mood."
+        }
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "summary": "Trigger a brief sparkle pop effect around the puppy whenever its mood image changes (NO clicks and YES acceptance).",
+      "acceptanceCriteria": [
+        "On each puppy image change, a brief sparkle effect appears around the puppy and fades out quickly.",
+        "The sparkle effect does not obscure the puppy image and does not interfere with clicks (pointer-events disabled).",
+        "The sparkle effect triggers when switching to the accepted state puppy as well."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SparklePop.tsx",
+          "operation": "create",
+          "description": "Create a pointer-events-none sparkle overlay component positioned around its parent (the puppy) that plays a short pop/fade animation (using a key prop or internal timer) without obscuring the image."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add CSS keyframes/utilities for the sparkle pop animation (quick scale/opacity burst) and styling for small sparkles that fit the Valentine aesthetic."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire SparklePop around the puppy image and trigger it on puppy image changes (derived from noClickCount and invitationState) so it fires on each NO click mood change and on YES acceptance."
+        }
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "summary": "Add a gentle ambient pulse/shift animation to the existing gradient background while preserving NO-click gradient cycling behavior.",
+      "acceptanceCriteria": [
+        "The page background has a subtle continuous animation (very slow, low amplitude) that gives a gentle pulsing/ambient feel.",
+        "The existing behavior of changing gradients on each NO click remains intact and clearly noticeable.",
+        "The animation remains performant on mobile (no obvious jank)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add a slow, low-amplitude ambient background animation utility that only animates transform/opacity/background-position in a way that stays performant and does not alter the gradient color set."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Adjust the root container styling to support the ambient gradient animation (e.g., use backgroundImage/backgroundSize/backgroundPosition or an overlay layer) while keeping the existing gradient switching logic intact."
+        }
+      ]
+    },
+    {
+      "id": "REQ-25",
+      "summary": "Add a soft, tasteful glow around the main Valentine question text while keeping it readable on the card background.",
+      "acceptanceCriteria": [
+        "The invitation screen’s main question text has a subtle glow/text-shadow that improves ‘sweet’ styling without harming contrast.",
+        "Text remains clearly readable on top of the existing card background across viewport sizes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add a subtle text glow utility (text-shadow with low blur/opacity) tuned for readability on the existing card background."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply the text glow class to the invitation screen’s main question text (without changing the existing copy) and ensure it remains readable across responsive sizes."
         }
       ]
     }

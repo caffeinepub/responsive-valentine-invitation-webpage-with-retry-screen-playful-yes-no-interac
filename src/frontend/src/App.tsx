@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { RefreshCw, Heart } from 'lucide-react';
+import FloatingHeartsBackground from '@/components/FloatingHeartsBackground';
+import SparklePop from '@/components/SparklePop';
 
 type Screen = 'error' | 'invitation';
 type InvitationState = 'asking' | 'accepted';
@@ -13,14 +15,6 @@ const gradients = [
   'linear-gradient(135deg, oklch(0.92 0.08 15) 0%, oklch(0.95 0.05 345) 100%)',
 ];
 
-const puppyImages = [
-  '/assets/generated/puppy-happy.dim_512x512.png',
-  '/assets/generated/puppy-sad-1.dim_512x512.png',
-  '/assets/generated/puppy-sad-2.dim_512x512.png',
-  '/assets/generated/puppy-sad-3.dim_512x512.png',
-  '/assets/generated/puppy-saddest.dim_512x512.png',
-];
-
 const sadPuppyImages = [
   '/assets/generated/puppy-sad-1.dim_512x512.png',
   '/assets/generated/puppy-sad-2.dim_512x512.png',
@@ -28,6 +22,7 @@ const sadPuppyImages = [
   '/assets/generated/puppy-saddest.dim_512x512.png',
 ];
 
+const happyAnimatedPuppyImage = '/assets/generated/puppy-happy-animated.dim_512x512.gif';
 const happiestPuppyImage = '/assets/generated/puppy-happiest.dim_512x512.gif';
 
 function App() {
@@ -38,14 +33,19 @@ function App() {
   const [showButtons, setShowButtons] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
   const [gradientIndex, setGradientIndex] = useState(0);
+  const [sparkleKey, setSparkleKey] = useState(0);
+  const [hasEnteredInvitation, setHasEnteredInvitation] = useState(false);
+  const noButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleRefresh = () => {
     setScreen('invitation');
+    setHasEnteredInvitation(true);
   };
 
   const handleYes = () => {
     setInvitationState('accepted');
     setShowConfetti(true);
+    setSparkleKey((prev) => prev + 1); // Trigger sparkle on acceptance
 
     // Hide buttons after 1 second
     setTimeout(() => {
@@ -63,18 +63,51 @@ function App() {
 
     const newCount = noClickCount + 1;
     setNoClickCount(newCount);
+    setSparkleKey((prev) => prev + 1); // Trigger sparkle on NO click
 
     // Change gradient
     setGradientIndex((prev) => (prev + 1) % gradients.length);
 
     // Calculate new random position for the No button
-    const maxX = window.innerWidth - 120;
-    const maxY = window.innerHeight - 60;
-    const newX = Math.random() * Math.max(0, maxX);
-    const newY = Math.random() * Math.max(0, maxY);
+    moveNoButton();
+  };
+
+  const moveNoButton = () => {
+    const padding = 20; // Safe padding from viewport edges
+    const buttonWidth = noButtonRef.current?.offsetWidth || 120;
+    const buttonHeight = noButtonRef.current?.offsetHeight || 60;
+
+    const maxX = window.innerWidth - buttonWidth - padding;
+    const maxY = window.innerHeight - buttonHeight - padding;
+
+    const newX = Math.max(padding, Math.random() * Math.max(padding, maxX));
+    const newY = Math.max(padding, Math.random() * Math.max(padding, maxY));
 
     setNoButtonPosition({ x: newX, y: newY });
   };
+
+  // Auto-move NO button after first click
+  useEffect(() => {
+    if (noClickCount > 0 && invitationState === 'asking') {
+      const interval = setInterval(() => {
+        moveNoButton();
+      }, 1500); // Move every 1.5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [noClickCount, invitationState]);
+
+  // Handle window resize to keep button in bounds
+  useEffect(() => {
+    if (noClickCount > 0 && invitationState === 'asking') {
+      const handleResize = () => {
+        moveNoButton();
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, [noClickCount, invitationState]);
 
   // Determine which puppy image to show
   const getPuppyImage = () => {
@@ -83,7 +116,7 @@ function App() {
     }
     
     if (noClickCount === 0) {
-      return puppyImages[0]; // Happy puppy
+      return happyAnimatedPuppyImage; // New animated happy puppy
     }
     
     // Loop through sad puppy images (1+ NO clicks)
@@ -95,7 +128,7 @@ function App() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4 transition-all duration-700"
+      className="min-h-screen flex items-center justify-center p-4 transition-all duration-700 ambient-gradient-pulse"
       style={{ background: currentGradient }}
     >
       {screen === 'error' && (
@@ -133,27 +166,35 @@ function App() {
       )}
 
       {screen === 'invitation' && (
-        <div className="text-center animate-fade-in w-full max-w-2xl mx-auto relative">
+        <div className="text-center w-full max-w-2xl mx-auto relative">
+          {/* Floating Hearts Background */}
+          <FloatingHeartsBackground />
+
           {/* Confetti Effect */}
           {showConfetti && <ConfettiEffect />}
 
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden">
+          <div className={`bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden ${hasEnteredInvitation ? 'animate-fade-in' : ''}`}>
             {/* Heart Shower Background (only when accepted) */}
             {invitationState === 'accepted' && <HeartShower />}
 
-            {/* Puppy Image */}
+            {/* Puppy Image with Glow and Sparkle */}
             <div className="mb-6 relative z-10">
-              <img
-                src={getPuppyImage()}
-                alt="Puppy"
-                className="w-48 h-48 mx-auto rounded-full object-cover shadow-lg transition-all duration-500"
-                style={{ aspectRatio: '1/1' }}
-              />
+              <div className="puppy-glow-wrapper">
+                <img
+                  src={getPuppyImage()}
+                  alt="Puppy"
+                  className={`w-48 h-48 mx-auto rounded-full object-cover shadow-lg transition-all duration-500 ${
+                    invitationState === 'asking' && noClickCount === 0 ? 'puppy-wiggle' : ''
+                  }`}
+                  style={{ aspectRatio: '1/1' }}
+                />
+                <SparklePop key={sparkleKey} />
+              </div>
             </div>
 
             {invitationState === 'asking' && (
               <>
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+                <h1 className={`text-3xl md:text-4xl font-bold text-gray-800 mb-3 text-glow ${hasEnteredInvitation ? 'animate-text-slide-in' : ''}`}>
                   Mr, Ayan Will You Like To Be My Valentine 2026 ?
                 </h1>
                 <p className="text-lg md:text-xl text-gray-600 mb-8">
@@ -181,10 +222,11 @@ function App() {
                       </Button>
                     ) : (
                       <Button
+                        ref={noButtonRef}
                         onClick={handleNo}
                         size="lg"
                         variant="outline"
-                        className="border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-full px-12 py-6 text-xl shadow-lg hover:shadow-xl transition-all duration-200 fixed z-50"
+                        className="border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-full px-12 py-6 text-xl hover:shadow-xl transition-all duration-200 fixed z-50 moving-button-shadow"
                         style={{
                           left: `${noButtonPosition.x}px`,
                           top: `${noButtonPosition.y}px`,

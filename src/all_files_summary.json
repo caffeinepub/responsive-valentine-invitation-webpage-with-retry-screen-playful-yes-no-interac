@@ -1,14 +1,16 @@
 {
-  "backend/main.mo": "Empty Motoko actor with no methods or state.",
-  "feature_evidence.json": "Feature evidence report describing two UI behaviors linked to App.tsx, including happiest puppy on acceptance and looping sad puppies on NO clicks.",
-  "frontend-file-summaries.txt": "Mapped summaries of key frontend files including App.tsx behavior, global styles, and Tailwind config.",
-  "frontend/index.css": "Tailwind base layer defining OKLCH theme tokens, dark mode variants, and global background/foreground styling.",
-  "frontend/index.html": "Minimal HTML entrypoint mounting the React app and loading main.tsx.",
-  "frontend/src/App.tsx": "Main React component implementing Valentine interaction logic, puppy image switching, confetti, gradient cycling, and moving NO button.",
-  "frontend/src/hooks/useActor.ts": "React hook creating and refreshing a backend actor based on Internet Identity changes using React Query.",
-  "frontend/src/hooks/useInternetIdentity.ts": "Authentication context and hooks for managing Internet Identity login, logout, and stored identity restoration.",
-  "frontend/src/index.css": "Global Tailwind and custom CSS with Quicksand font, OKLCH theme variables, animations, and utility classes.",
-  "frontend/src/main.tsx": "React entrypoint setting up QueryClient, InternetIdentityProvider, and rendering App.",
-  "frontend/tailwind.config.js": "Tailwind config extending colors, typography, shadows, animations, and registering plugins for a themed UI.",
-  "project_state.json": "Defines the project’s state for a responsive Valentine-themed single-page app, including features, required images, and UI behaviors. Lists implemented features such as screen transitions, button logic, background changes, and puppy image updates."
+  "backend/main.mo": "Empty Motoko actor with no defined methods.",
+  "feature_evidence.json": "Feature evidence report mapping UI/animation features to source files, components, test IDs, and confidence levels.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing the purpose and effects of key frontend files and components.",
+  "frontend/index.css": "Tailwind base theme defining color tokens, CSS variables, and dark‑mode variants for the app shell.",
+  "frontend/index.html": "Minimal HTML document bootstrapping the React app and loading main.tsx.",
+  "frontend/src/App.tsx": "Main app component handling invitation flow, puppy mood logic, moving NO button behavior, gradients, confetti, sparkles, and background animations.",
+  "frontend/src/components/FloatingHeartsBackground.tsx": "Renders randomized floating heart icons in a fixed background for subtle animated ambiance.",
+  "frontend/src/components/SparklePop.tsx": "Creates an 8‑element radial sparkle burst animation centered around the puppy.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and updates a backend actor based on the current Internet Identity and manages query invalidation.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides Internet Identity auth context, handles login/logout, identity persistence, and AuthClient setup.",
+  "frontend/src/index.css": "Global styles including Quicksand font, theme tokens, dark mode, and custom animation utilities like fade‑in and text slide‑in.",
+  "frontend/src/main.tsx": "Entrypoint that mounts the React app with React Query and Internet Identity providers.",
+  "frontend/tailwind.config.js": "Tailwind config enabling dark mode, content scanning, custom colors, animations, fonts, and container settings using several plugins.",
+  "project_state.json": "Project state file describing the Valentine SPA’s features, requirements, transitions, animations, and UI behavior rules."
 }

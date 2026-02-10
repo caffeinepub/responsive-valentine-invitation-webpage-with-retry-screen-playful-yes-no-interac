@@ -1,13 +1,14 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Responsive single-page Valentine invitation webpage: starts with a network error screen with retry/refresh button; transitions to a Valentine invite with YES/NO interactions, confetti/hearts effects, dynamic gradient background, and a puppy image that changes mood on NO clicks with a looping sad-image sequence; YES reveal shows a happiest puppy image/GIF.",
+  "projectStateVersion": 11,
+  "summary": "Responsive single-page Valentine invitation webpage with initial network error screen and retry/refresh transition into a Valentine invite featuring YES/NO interactions, confetti/hearts effects, dynamic gradient background, and puppy mood changes; plus added visual polish extras (pulsing glows, floating hearts, fade-ins, and subtle shadows/bounce animations).",
   "architectural_notes": [
-    "Implement as a responsive single-page HTML/CSS/JS experience with state-based screen transitions and animations (CSS transitions + JS-driven effects like confetti/hearts)."
+    "Implement as a responsive single-page HTML/CSS/JS experience with state-based screen transitions and animations (CSS transitions + JS-driven effects like confetti/hearts).",
+    "Ensure the NO button’s random positions are clamped to the viewport/safe area so it never renders off-screen.",
+    "Keep added visual polish effects lightweight (CSS animations where possible) and avoid distracting from the core YES/NO interactions."
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Happiest puppy image or animated GIF, cute/joyful expression, soft lighting (puppy-happiest.dim_512x512.gif)",
   "existing_features": [
     {
       "id": "feature-create-a-responsive-single-page-ui-with-two-screens-1-an-initial-network-error-screen-and-2-a-valentine-invitation-screen-with-a-smooth-natural-transition-between-them",
@@ -112,6 +113,102 @@
         "REQ-13"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-valentine-invitation-screen-so-that-after-the-user-clicks-the-no-button-once-the-no-button-starts-jumping-to-new-random-positions-on-the-screen-automatically-i-e-continues-moving-on-its-own-and-keeps-doing-so-in-a-loop-until-the-user-clicks-the-yes-button-keep-the-puppy-image-sequence-looping-on-repeated-no-interactions-do-not-stop-at-the-last-sad-image",
+      "title": "Update the Valentine invitation screen so that after the user clicks the “no” button once, the “no” button starts jumping to new random positions on the screen automatically (i.e., continues moving on its own) and keeps doing so in a loop until the user clicks the “yes” button. Keep the puppy image sequence looping on repeated “no” interactions (do not stop at the last sad image).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-valentine-invitation-screen-so-that-after-the-user-clicks-the-no-button-once-the-no-button-automatically-keeps-jumping-to-new-random-positions-on-its-own-in-a-loop-until-the-user-clicks-yes-the-button-should-continue-to-be-clickable-while-moving",
+      "title": "Update the Valentine invitation screen so that after the user clicks the “no” button once, the “no” button automatically keeps jumping to new random positions on its own in a loop until the user clicks “yes” (the button should continue to be clickable while moving).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-constrain-the-automatically-moving-no-button-positions-so-the-button-never-renders-off-screen-on-common-viewport-sizes-mobile-and-desktop-accounting-for-the-button-s-width-height-and-safe-padding-from-edges",
+      "title": "Constrain the automatically moving “no” button positions so the button never renders off-screen on common viewport sizes (mobile and desktop), accounting for the button’s width/height and safe padding from edges.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-animated-happy-puppy-asset-and-use-it-as-the-initial-puppy-shown-on-the-valentine-invitation-screen-before-any-no-clicks-while-still-keeping-the-existing-sad-puppy-loop-behavior-on-subsequent-no-interactions-and-the-existing-happiest-puppy-gif-on-yes-acceptance",
+      "title": "Add an animated happy puppy asset and use it as the initial puppy shown on the Valentine invitation screen before any “no” clicks (while still keeping the existing sad puppy loop behavior on subsequent “no” interactions and the existing happiest puppy GIF on “yes” acceptance).",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-tiny-floating-heart-bubbles-drifting-upward-in-the-background-of-the-valentine-invitation-screen-and-keep-them-subtle-so-they-do-not-distract-from-the-main-card-content",
+      "title": "Add tiny floating heart bubbles drifting upward in the background of the Valentine invitation screen (and keep them subtle so they do not distract from the main card content).",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-soft-pulsing-glow-outline-around-the-puppy-image-on-the-invitation-screen",
+      "title": "Add a soft pulsing glow outline around the puppy image on the invitation screen.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-smooth-fade-in-animation-for-the-main-valentine-question-text-when-the-invitation-screen-is-shown",
+      "title": "Add a smooth fade-in animation for the main Valentine question text when the invitation screen is shown.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-very-soft-shadow-grounding-effect-under-the-moving-no-button-so-it-looks-playful-while-it-jumps-around",
+      "title": "Add a very soft shadow/grounding effect under the moving “no” button so it looks playful while it jumps around.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-subtle-idle-wiggle-bounce-animation-to-the-initial-happy-puppy-before-any-no-clicks-to-make-it-feel-more-alive",
+      "title": "Add a subtle idle wiggle/bounce animation to the initial happy puppy (before any NO clicks) to make it feel more alive.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-small-sparkle-pop-animation-around-the-puppy-each-time-its-mood-image-changes-e-g-on-each-no-click-and-when-switching-to-the-accepted-happiest-puppy-on-yes",
+      "title": "Add a small sparkle ‘pop’ animation around the puppy each time its mood image changes (e.g., on each NO click and when switching to the accepted happiest puppy on YES).",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-background-feel-slightly-more-alive-by-adding-a-very-gentle-pulse-shift-effect-to-the-existing-gradient-background-without-changing-the-existing-gradient-color-set-or-no-click-gradient-cycling-behavior",
+      "title": "Make the background feel slightly more alive by adding a very gentle pulse/shift effect to the existing gradient background without changing the existing gradient color set or NO-click gradient cycling behavior.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-soft-glow-around-the-main-valentine-question-text-on-the-invitation-screen-keep-it-readable-and-tasteful",
+      "title": "Add a soft glow around the main Valentine question text on the invitation screen (keep it readable and tasteful).",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -148,6 +245,24 @@
     {
       "id": "AR-6",
       "summary": "Make the sad puppy image sequence on the Valentine invitation screen loop (cycle through sad variants repeatedly rather than stopping at the last image)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Use the exact invitation copy provided: “Mr, Ayan Will You Like To Be My Valentine 2026 ?” with subtitle “on this 14th of feb i wanna be the 1 4 u”",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Constrain the jumping/auto-moving NO button so it never goes off-screen (always stays within the viewport) while looping until YES is clicked",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Add extra visual polish: pulsing glow outline around the puppy, tiny floating heart bubbles drifting in the background, smooth fade-in for the main question text, a soft shadow under the jumping NO button, and a subtle happy-puppy wiggle/bounce animation",
       "reqIds": [],
       "status": "pending"
     }

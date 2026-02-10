@@ -1,57 +1,175 @@
 {
   "kind": "build_request",
-  "title": "Replace accepted-state puppy with happiest image/GIF and loop sad puppy sequence on NO clicks",
+  "title": "Add extra Valentine page visual polish animations (glow, floating hearts, sparkles, subtle motion)",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-12",
-      "text": "When the invitation is in the accepted state (after clicking “yes”), display a happiest puppy image/GIF in the reveal area instead of continuing to show the current sad puppy from the NO-click sequence.",
+      "id": "REQ-18",
+      "text": "Add tiny floating heart bubbles drifting upward in the background of the Valentine invitation screen (and keep them subtle so they do not distract from the main card content).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-6"
+          "msg-1",
+          "msg-2"
         ],
         "quotes": [
-          "change the photo of sad puppy in revealing messeage & Instead import a happiest puppy's image or gif in there"
+          "Add tiny floating heart bubbles drifting upward in the background",
+          "Oky sure add them"
         ]
       },
       "acceptanceCriteria": [
-        "After clicking “yes”, the puppy media shown is always the happiest puppy asset (not affected by prior NO clicks).",
-        "All existing accepted-state behavior remains unchanged: the reveal text stays exactly “now u're my personal marad, no backoffing”, buttons hide after ~1s, confetti lasts ~10s, heart shower remains visible behind/within the message area."
+        "When on the invitation screen, small semi-transparent hearts continuously drift upward behind the main card content.",
+        "The floating hearts effect is subtle (low opacity, slow speed) and does not block interaction with buttons (pointer-events disabled).",
+        "The effect remains within the existing soft red/white Valentine aesthetic."
       ]
     },
     {
-      "id": "REQ-13",
-      "text": "Make the sad puppy images on the Valentine invitation screen loop on repeated presses of the “no” button (cycle through the sad variants repeatedly rather than stopping at the last sad image).",
+      "id": "REQ-19",
+      "text": "Add a soft pulsing glow outline around the puppy image on the invitation screen.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-6"
+          "msg-1",
+          "msg-2"
         ],
         "quotes": [
-          "also the puppy's pics in valentines invitation make those sad pupy's image be in loop"
+          "Add a soft glowing outline around the puppy that slowly pulses",
+          "Oky sure add them"
         ]
       },
       "acceptanceCriteria": [
-        "With 0 NO clicks, the initial puppy remains the existing happy puppy image.",
-        "With 1+ NO clicks, the puppy image cycles through the existing sad images in a repeating loop (e.g., sad-1 → sad-2 → sad-3 → saddest → sad-1 …).",
-        "The looping change does not alter other NO-click behaviors: the NO button still jumps after the first NO click and continues to jump on subsequent NO clicks; the background gradient still cycles on each NO click."
+        "The puppy image has a visible soft glow/halo that gently pulses over time.",
+        "The glow does not cause layout shift and remains centered around the circular puppy image.",
+        "The glow works for all puppy states (initial happy animated puppy, sad loop images, and happiest GIF on acceptance)."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Add a smooth fade-in animation for the main Valentine question text when the invitation screen is shown.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2"
+        ],
+        "quotes": [
+          "Add a smooth fade-in animation when the “Will You Be My Valentine?” text appears",
+          "Oky sure add them"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When transitioning to the invitation screen, the main question text animates in with a smooth fade/slide (no abrupt appearance).",
+        "The animation plays only on initial render of the invitation screen (not repeatedly on every state change like NO clicks)."
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Add a very soft shadow/grounding effect under the moving “no” button so it looks playful while it jumps around.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2"
+        ],
+        "quotes": [
+          "Add a very soft shadow under the jumping “no” button so it looks more playful",
+          "Oky sure add them"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After the first NO interaction (when the NO button becomes fixed-position and moves), it has an additional soft shadow or drop-shadow that makes it feel lifted.",
+        "The shadow remains consistent as the button moves and does not reduce readability of the button label.",
+        "The NO button remains fully clickable while moving."
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Add a subtle idle wiggle/bounce animation to the initial happy puppy (before any NO clicks) to make it feel more alive.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2"
+        ],
+        "quotes": [
+          "Make the happy puppy wiggle its tail or bounce slightly",
+          "Oky sure add them"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When noClickCount is 0 (initial happy animated puppy), the puppy element has a subtle wiggle/bounce idle animation.",
+        "Once the user starts clicking NO (sad images), the idle animation is reduced or disabled so it does not conflict with the ‘sad’ mood.",
+        "No layout shift occurs during the animation."
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "text": "Add a small sparkle ‘pop’ animation around the puppy each time its mood image changes (e.g., on each NO click and when switching to the accepted happiest puppy on YES).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Add a small sparkle animation around the puppy each time it changes mood"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On each puppy image change, a brief sparkle effect appears around the puppy and fades out quickly.",
+        "The sparkle effect does not obscure the puppy image and does not interfere with clicks (pointer-events disabled).",
+        "The sparkle effect triggers when switching to the accepted state puppy as well."
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "text": "Make the background feel slightly more alive by adding a very gentle pulse/shift effect to the existing gradient background without changing the existing gradient color set or NO-click gradient cycling behavior.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Make the gradient very gently pulse so the background feels alive"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The page background has a subtle continuous animation (very slow, low amplitude) that gives a gentle pulsing/ambient feel.",
+        "The existing behavior of changing gradients on each NO click remains intact and clearly noticeable.",
+        "The animation remains performant on mobile (no obvious jank)."
+      ]
+    },
+    {
+      "id": "REQ-25",
+      "text": "Add a soft glow around the main Valentine question text on the invitation screen (keep it readable and tasteful).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "Add a soft glow around the main Valentine question text"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The invitation screen’s main question text has a subtle glow/text-shadow that improves ‘sweet’ styling without harming contrast.",
+        "Text remains clearly readable on top of the existing card background across viewport sizes."
       ]
     }
   ],
   "constraints": [
-    "Minimize changes and do not modify unrelated UI/animations/wording (“don’t mess anything now”).",
-    "Do not edit files under frontend/src/components/ui (compose-only).",
-    "Do not introduce any backend changes; backend/main.mo should remain functionally unchanged."
+    "Frontend must not modify files under frontend/src/components/ui (Shadcn UI components) and must compose them instead.",
+    "Frontend must not edit immutable hook/entry files listed in SYSTEM_CONTEXT (e.g., frontend/src/main.tsx, frontend/src/hooks/useActor.ts, frontend/src/hooks/useInternetIdentity.ts).",
+    "Keep all existing user-facing copy unchanged (including button labels “yes”/“no” and the accepted message text).",
+    "Do not change existing YES/NO interaction logic (confetti duration, heart shower behavior, NO auto-move timing) beyond adding purely visual polish effects."
   ],
   "nonGoals": [
-    "Changing the main question/subtitle text, button labels, timing of button hiding, confetti duration, or heart shower behavior.",
-    "Adding new screens, authentication flows, or persistence."
+    "Adding new screens, routes, or backend features.",
+    "Adding third-party integrations or analytics.",
+    "Changing the puppy image assets or filenames (this request is for visual polish effects only).",
+    "Changing the Valentine invitation wording or button labels."
   ],
   "imageRequirements": {
-    "required": [
-      "Happiest puppy image or animated GIF, cute/joyful expression, soft lighting (puppy-happiest.dim_512x512.gif)"
-    ],
+    "required": [],
     "edits": []
   },
   "userProfileUpdate": {

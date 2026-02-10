@@ -2,10 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-when-the-invitation-is-in-the-accepted-state-after-clicking-yes-display-a-happiest-puppy-image-gif-in-the-reveal-area-instead-of-continuing-to-show-the-current-sad-puppy-from-the-no-click-sequence",
-      "featureTitle": "When the invitation is in the accepted state (after clicking “yes”), display a happiest puppy image/GIF in the reveal area instead of continuing to show the current sad puppy from the NO-click sequence.",
+      "featureId": "feature-add-tiny-floating-heart-bubbles-drifting-upward-in-the-background-of-the-valentine-invitation-screen-and-keep-them-subtle-so-they-do-not-distract-from-the-main-card-content",
+      "featureTitle": "Add tiny floating heart bubbles drifting upward in the background of the Valentine invitation screen (and keep them subtle so they do not distract from the main card content).",
       "files": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/FloatingHeartsBackground.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,15 +17,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-12"
+        "REQ-18"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-make-the-sad-puppy-images-on-the-valentine-invitation-screen-loop-on-repeated-presses-of-the-no-button-cycle-through-the-sad-variants-repeatedly-rather-than-stopping-at-the-last-sad-image",
-      "featureTitle": "Make the sad puppy images on the Valentine invitation screen loop on repeated presses of the “no” button (cycle through the sad variants repeatedly rather than stopping at the last sad image).",
+      "featureId": "feature-add-a-soft-pulsing-glow-outline-around-the-puppy-image-on-the-invitation-screen",
+      "featureTitle": "Add a soft pulsing glow outline around the puppy image on the invitation screen.",
       "files": [
-        "frontend/src/App.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -33,7 +36,122 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-13"
+        "REQ-19"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-smooth-fade-in-animation-for-the-main-valentine-question-text-when-the-invitation-screen-is-shown",
+      "featureTitle": "Add a smooth fade-in animation for the main Valentine question text when the invitation screen is shown.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-very-soft-shadow-grounding-effect-under-the-moving-no-button-so-it-looks-playful-while-it-jumps-around",
+      "featureTitle": "Add a very soft shadow/grounding effect under the moving “no” button so it looks playful while it jumps around.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-subtle-idle-wiggle-bounce-animation-to-the-initial-happy-puppy-before-any-no-clicks-to-make-it-feel-more-alive",
+      "featureTitle": "Add a subtle idle wiggle/bounce animation to the initial happy puppy (before any NO clicks) to make it feel more alive.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-small-sparkle-pop-animation-around-the-puppy-each-time-its-mood-image-changes-e-g-on-each-no-click-and-when-switching-to-the-accepted-happiest-puppy-on-yes",
+      "featureTitle": "Add a small sparkle ‘pop’ animation around the puppy each time its mood image changes (e.g., on each NO click and when switching to the accepted happiest puppy on YES).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SparklePop.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-23"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-make-the-background-feel-slightly-more-alive-by-adding-a-very-gentle-pulse-shift-effect-to-the-existing-gradient-background-without-changing-the-existing-gradient-color-set-or-no-click-gradient-cycling-behavior",
+      "featureTitle": "Make the background feel slightly more alive by adding a very gentle pulse/shift effect to the existing gradient background without changing the existing gradient color set or NO-click gradient cycling behavior.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-24"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-soft-glow-around-the-main-valentine-question-text-on-the-invitation-screen-keep-it-readable-and-tasteful",
+      "featureTitle": "Add a soft glow around the main Valentine question text on the invitation screen (keep it readable and tasteful).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-25"
       ],
       "confidence": "high"
     }

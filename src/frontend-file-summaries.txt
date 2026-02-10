@@ -1,5 +1,7 @@
 {
-  "frontend/src/App.tsx": "Main Valentine invitation app with state machine managing network error screen, invitation screen with YES/NO interactions, looping sad puppy images on NO clicks, happiest puppy GIF on acceptance, jumping NO button, gradient cycling, confetti effect, and heart shower animation.",
-  "frontend/src/index.css": "Global styles with Quicksand font family, soft red/white OKLCH color tokens, custom animations for fade-in, confetti fall, heart shower, and smooth transitions throughout the Valentine-themed UI.",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with Quicksand font family, soft shadow utilities, and custom Valentine-themed design tokens for the red/white aesthetic."
+  "frontend/src/App.tsx": "Main Valentine invitation app with state machine, YES/NO interactions, auto-moving NO button, animated puppy states, gradient cycling, confetti, heart shower, floating hearts background, puppy glow/wiggle/sparkle effects, text animations, and enhanced visual polish throughout.",
+  "frontend/src/index.css": "Global styles with Quicksand font, soft red/white OKLCH color tokens, and comprehensive custom animations including floating hearts, puppy glow pulse, puppy wiggle, sparkle pop, moving button shadow, text glow, ambient gradient pulse, and all existing Valentine-themed animations.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Quicksand font family, soft shadow utilities, and custom Valentine-themed design tokens for the red/white aesthetic.",
+  "frontend/src/components/FloatingHeartsBackground.tsx": "Pointer-events-none background overlay component that renders subtle floating heart bubbles continuously drifting upward behind the invitation card content.",
+  "frontend/src/components/SparklePop.tsx": "Pointer-events-none sparkle overlay component that triggers a brief radial burst animation around the puppy on mood changes (NO clicks and YES acceptance)."
 }
