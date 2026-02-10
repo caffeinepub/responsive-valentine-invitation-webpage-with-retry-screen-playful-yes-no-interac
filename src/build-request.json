@@ -1,0 +1,67 @@
+{
+  "kind": "build_request",
+  "title": "Replace accepted-state puppy with happiest image/GIF and loop sad puppy sequence on NO clicks",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "text": "When the invitation is in the accepted state (after clicking “yes”), display a happiest puppy image/GIF in the reveal area instead of continuing to show the current sad puppy from the NO-click sequence.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "change the photo of sad puppy in revealing messeage & Instead import a happiest puppy's image or gif in there"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After clicking “yes”, the puppy media shown is always the happiest puppy asset (not affected by prior NO clicks).",
+        "All existing accepted-state behavior remains unchanged: the reveal text stays exactly “now u're my personal marad, no backoffing”, buttons hide after ~1s, confetti lasts ~10s, heart shower remains visible behind/within the message area."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Make the sad puppy images on the Valentine invitation screen loop on repeated presses of the “no” button (cycle through the sad variants repeatedly rather than stopping at the last sad image).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "also the puppy's pics in valentines invitation make those sad pupy's image be in loop"
+        ]
+      },
+      "acceptanceCriteria": [
+        "With 0 NO clicks, the initial puppy remains the existing happy puppy image.",
+        "With 1+ NO clicks, the puppy image cycles through the existing sad images in a repeating loop (e.g., sad-1 → sad-2 → sad-3 → saddest → sad-1 …).",
+        "The looping change does not alter other NO-click behaviors: the NO button still jumps after the first NO click and continues to jump on subsequent NO clicks; the background gradient still cycles on each NO click."
+      ]
+    }
+  ],
+  "constraints": [
+    "Minimize changes and do not modify unrelated UI/animations/wording (“don’t mess anything now”).",
+    "Do not edit files under frontend/src/components/ui (compose-only).",
+    "Do not introduce any backend changes; backend/main.mo should remain functionally unchanged."
+  ],
+  "nonGoals": [
+    "Changing the main question/subtitle text, button labels, timing of button hiding, confetti duration, or heart shower behavior.",
+    "Adding new screens, authentication flows, or persistence."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Happiest puppy image or animated GIF, cute/joyful expression, soft lighting (puppy-happiest.dim_512x512.gif)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-when-the-invitation-is-in-the-accepted-state-after-clicking-yes-display-a-happiest-puppy-image-gif-in-the-reveal-area-instead-of-continuing-to-show-the-current-sad-puppy-from-the-no-click-sequence",
+      "featureTitle": "When the invitation is in the accepted state (after clicking “yes”), display a happiest puppy image/GIF in the reveal area instead of continuing to show the current sad puppy from the NO-click sequence.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-make-the-sad-puppy-images-on-the-valentine-invitation-screen-loop-on-repeated-presses-of-the-no-button-cycle-through-the-sad-variants-repeatedly-rather-than-stopping-at-the-last-sad-image",
+      "featureTitle": "Make the sad puppy images on the Valentine invitation screen loop on repeated presses of the “no” button (cycle through the sad variants repeatedly rather than stopping at the last sad image).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

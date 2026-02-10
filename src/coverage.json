@@ -1,0 +1,52 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T11:09:52.276Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-12",
+        "summary": "When the invitation is in the accepted state (after clicking “yes”), display a happiest puppy image/GIF in the reveal area instead of continuing to show the current sad puppy from the NO-click sequence.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/puppy-happiest.dim_512x512.gif",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/puppy-happiest.dim_512x512.gif",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Make the sad puppy images on the Valentine invitation screen loop on repeated presses of the “no” button (cycle through the sad variants repeatedly rather than stopping at the last sad image).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/puppy-happiest.dim_512x512.gif",
+    "frontend/src/App.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

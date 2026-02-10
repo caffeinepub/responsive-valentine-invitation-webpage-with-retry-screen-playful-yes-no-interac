@@ -1,0 +1,5 @@
+{
+  "frontend/src/App.tsx": "Main Valentine invitation app with state machine managing network error screen, invitation screen with YES/NO interactions, looping sad puppy images on NO clicks, happiest puppy GIF on acceptance, jumping NO button, gradient cycling, confetti effect, and heart shower animation.",
+  "frontend/src/index.css": "Global styles with Quicksand font family, soft red/white OKLCH color tokens, custom animations for fade-in, confetti fall, heart shower, and smooth transitions throughout the Valentine-themed UI.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Quicksand font family, soft shadow utilities, and custom Valentine-themed design tokens for the red/white aesthetic."
+}

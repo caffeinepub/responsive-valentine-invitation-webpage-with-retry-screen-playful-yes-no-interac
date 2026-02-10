@@ -1,0 +1,43 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Swap accepted-state puppy media and loop sad puppy sequence on NO clicks",
+  "requirements": [
+    {
+      "id": "REQ-12",
+      "summary": "Show a dedicated happiest puppy image/GIF in the reveal area when the invitation is accepted, independent of prior NO-click state.",
+      "acceptanceCriteria": [
+        "After clicking “yes”, the puppy media shown is always the happiest puppy asset (not affected by prior NO clicks).",
+        "All existing accepted-state behavior remains unchanged: the reveal text stays exactly “now u're my personal marad, no backoffing”, buttons hide after ~1s, confetti lasts ~10s, heart shower remains visible behind/within the message area."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/puppy-happiest.dim_512x512.gif",
+          "operation": "create",
+          "description": "Add the required happiest puppy media asset so it can be displayed in the accepted/reveal state (required filename: frontend/public/assets/generated/puppy-happiest.dim_512x512.gif)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the invitation puppy media selection so that when invitationState is 'accepted' the <img> always uses the happiest asset (frontend/public/assets/generated/puppy-happiest.dim_512x512.gif), without changing any other accepted-state text, timing, confetti, or heart shower behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Loop the sad puppy images on repeated NO clicks by cycling through the sad variants indefinitely while keeping other NO behaviors unchanged.",
+      "acceptanceCriteria": [
+        "With 0 NO clicks, the initial puppy remains the existing happy puppy image.",
+        "With 1+ NO clicks, the puppy image cycles through the existing sad images in a repeating loop (e.g., sad-1 → sad-2 → sad-3 → saddest → sad-1 …).",
+        "The looping change does not alter other NO-click behaviors: the NO button still jumps after the first NO click and continues to jump on subsequent NO clicks; the background gradient still cycles on each NO click."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Adjust the 'asking' state puppy image logic to (1) keep the existing happy asset for 0 NO clicks (frontend/public/assets/generated/puppy-happy.dim_512x512.png) and (2) loop through the existing sad assets on 1+ NO clicks using modulo over the sad set (frontend/public/assets/generated/puppy-sad-1.dim_512x512.png, frontend/public/assets/generated/puppy-sad-2.dim_512x512.png, frontend/public/assets/generated/puppy-sad-3.dim_512x512.png, frontend/public/assets/generated/puppy-saddest.dim_512x512.png), without changing NO button jumping or gradient cycling behavior."
+        }
+      ]
+    }
+  ]
+}

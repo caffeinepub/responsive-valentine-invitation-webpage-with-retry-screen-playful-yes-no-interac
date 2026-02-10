@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Responsive single-page Valentine invitation webpage: starts with a network error screen with retry/refresh button; transitions to a Valentine invite with YES/NO interactions, confetti/hearts effects, dynamic gradient background, and a puppy image that changes mood on NO clicks with a looping sad-image sequence; YES reveal shows a happiest puppy image/GIF.",
+  "architectural_notes": [
+    "Implement as a responsive single-page HTML/CSS/JS experience with state-based screen transitions and animations (CSS transitions + JS-driven effects like confetti/hearts)."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Happiest puppy image or animated GIF, cute/joyful expression, soft lighting (puppy-happiest.dim_512x512.gif)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-responsive-single-page-ui-with-two-screens-1-an-initial-network-error-screen-and-2-a-valentine-invitation-screen-with-a-smooth-natural-transition-between-them",
+      "title": "Create a responsive single-page UI with two screens: (1) an initial “network error” screen and (2) a Valentine invitation screen, with a smooth, natural transition between them.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-initial-network-error-screen-ui-with-a-friendly-retry-message-and-a-centered-refresh-button",
+      "title": "Implement the initial network error screen UI with a friendly retry message and a centered refresh button.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-valentine-invitation-screen-ui-with-the-exact-main-question-and-subtitle-text-and-place-two-buttons-labeled-exactly-yes-and-no-directly-below-the-message",
+      "title": "Implement the Valentine invitation screen UI with the exact main question and subtitle text, and place two buttons labeled exactly “yes” and “no” directly below the message.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-puppy-image-above-the-valentine-invitation-message-on-each-press-of-the-no-button-update-the-puppy-image-to-a-different-picture-that-becomes-progressively-sadder",
+      "title": "Add a puppy image above the Valentine invitation message; on each press of the “no” button, update the puppy image to a different picture that becomes progressively sadder.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-no-button-behavior-only-after-the-user-clicks-no-the-button-should-jump-to-a-new-position-on-the-screen-this-should-continue-in-a-loop-on-every-no-click-until-the-user-clicks-yes",
+      "title": "Implement “no” button behavior: only after the user clicks “no”, the button should jump to a new position on the screen; this should continue in a loop on every “no” click until the user clicks “yes”.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-each-no-click-change-the-soft-gradient-background-to-different-soft-colors-while-maintaining-an-aesthetic-soft-red-white-theme",
+      "title": "On each “no” click, change the soft gradient background to different soft colors while maintaining an aesthetic soft red & white theme.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-yes-button-behavior-reveal-the-exact-message-now-u-re-my-personal-marad-no-backoffing-hide-both-yes-and-no-buttons-smoothly-after-1-second-and-trigger-a-soft-confetti-effect-that-lasts-10-seconds-then-disappears",
+      "title": "Implement “yes” button behavior: reveal the exact message “now u're my personal marad, no backoffing”, hide both YES and NO buttons smoothly after 1 second, and trigger a soft confetti effect that lasts 10 seconds then disappears.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-heart-shower-visual-effect-behind-within-the-revealed-message-area-soft-red-hearts-that-appear-one-after-another-like-a-shower-when-the-yes-reveal-message-is-shown",
+      "title": "Add a heart shower visual effect behind/within the revealed message area: soft red hearts that appear one after another like a shower when the “yes” reveal message is shown.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-the-requested-overall-design-system-soft-gradient-background-rounded-edges-subtle-shadows-consistent-font-across-all-text-and-a-sweet-soft-playful-aesthetic-in-red-white-across-both-screens",
+      "title": "Apply the requested overall design system: soft gradient background, rounded edges, subtle shadows, consistent font across all text, and a sweet/soft/playful aesthetic in red & white across both screens.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-introduce-one-coherent-visual-theme-direction-colors-typography-layout-styling-that-matches-a-sweet-soft-playful-valentine-aesthetic-red-white-and-apply-it-consistently-across-the-page-without-adding-extra-product-features",
+      "title": "Introduce one coherent visual theme direction (colors, typography, layout styling) that matches a sweet, soft, playful Valentine aesthetic (red & white), and apply it consistently across the page without adding extra product features.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-required-static-image-assets-puppy-mood-sequence-under-frontend-public-assets-generated-and-render-them-directly-from-the-frontend-not-via-backend",
+      "title": "Add the required static image assets (puppy mood sequence) under frontend/public/assets/generated and render them directly from the frontend (not via backend).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-when-the-invitation-is-in-the-accepted-state-after-clicking-yes-display-a-happiest-puppy-image-gif-in-the-reveal-area-instead-of-continuing-to-show-the-current-sad-puppy-from-the-no-click-sequence",
+      "title": "When the invitation is in the accepted state (after clicking “yes”), display a happiest puppy image/GIF in the reveal area instead of continuing to show the current sad puppy from the NO-click sequence.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-sad-puppy-images-on-the-valentine-invitation-screen-loop-on-repeated-presses-of-the-no-button-cycle-through-the-sad-variants-repeatedly-rather-than-stopping-at-the-last-sad-image",
+      "title": "Make the sad puppy images on the Valentine invitation screen loop on repeated presses of the “no” button (cycle through the sad variants repeatedly rather than stopping at the last sad image).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Initial 'network error' screen with friendly retry message and centered refresh button that transitions to the Valentine invitation screen",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Valentine invitation UI: main question text, subtitle, consistent typography, soft red/white aesthetic, rounded corners, subtle shadows, smooth transitions",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "YES button behavior: reveal message, hide YES/NO after 1s, trigger soft confetti effect lasting ~10s, and show heart-shower background behind the revealed message",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "NO button behavior: on each click it jumps to a new position in a loop until YES is clicked; also change soft gradient background colors and update puppy image to progressively sadder variants per NO click",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "On the YES reveal (final message area), replace the sad puppy photo with a happiest puppy image or GIF",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Make the sad puppy image sequence on the Valentine invitation screen loop (cycle through sad variants repeatedly rather than stopping at the last image)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Responsive Valentine invitation webpage with retry screen, playful YES/NO interactions, confetti, hearts, and puppy mood changes",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
