@@ -910,7 +910,7 @@ function Slide2({
           <EnvelopeSVG />
         </div>
         <p className="body-text italic text-pink-500 mb-8 text-base">
-          message from adrika to shlok
+          message from sakshi to samiksha
         </p>
         <div className="flex gap-4 justify-center items-end">
           <HoldOpenButton
@@ -1078,7 +1078,7 @@ function FireworksBurst({ active }: { active: boolean }) {
 }
 
 // ─── Typewriter ──────────────────────────────────────────────────────────────
-const NOTE_TEXT = `I'm really sorry, Ik I'm. Kinda late for notify u this but a ver happiest birthday to u amour. Not gonna make it too dramatic but yeah, the world did something right the day u were born. I hope this new year to u brings u stupid amounts of happiness, good food, loud laughter, & moments that make u pause, gentleness & smile. U deserve the kind of days that feel light and peaceful, just know there's someone here quietly wishing the universe treats you extra gently this year. Once. Again happy belayed birthday`;
+const NOTE_TEXT = `I'm really sorry, Ik I'm. Kinda late for notify u this but a ver happiest birthday to u jaanu. Not gonna make it too dramatic but yeah, the world did something right the day u were born. I hope this new year to u brings u stupid amounts of happiness, good food, loud laughter, & moments that make u pause, gentleness & smile. U deserve the kind of days that feel light and peaceful, just know there's someone here quietly wishing the universe treats you extra gently this year. Once. Again happy belayed birthday`;
 
 function TypewriterText({
   text,
@@ -1113,7 +1113,7 @@ function TypewriterText({
 
 // ─── Animated Signature ───────────────────────────────────────────────────────
 function AnimatedSignature() {
-  const text = "— ur adrika 💕";
+  const text = "— ur sakshi 💕";
   const [visibleCount, setVisibleCount] = useState(0);
 
   useEffect(() => {
@@ -1228,7 +1228,7 @@ function Slide3({ active }: { active: boolean }) {
       >
         <div className="text-2xl mb-2 select-none">🌸 🌷 🌸</div>
         <h1 className="heading-display text-4xl md:text-5xl mb-3 rainbow-shimmer-text">
-          happy birthday shlok
+          happy birthday samiksha
         </h1>
         <p className="body-text text-pink-500 text-lg italic mb-5">
           another year to cheer up 🎂
@@ -1246,7 +1246,7 @@ function Slide3({ active }: { active: boolean }) {
             <AnimatedSignature />
           ) : (
             <p className="body-text text-pink-500 italic text-right mt-4 text-base">
-              — ur adrika 💕
+              — ur sakshi 💕
             </p>
           )}
           <PolaroidFrame />
