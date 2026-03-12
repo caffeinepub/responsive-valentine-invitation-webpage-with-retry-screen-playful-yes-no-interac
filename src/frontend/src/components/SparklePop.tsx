@@ -8,8 +8,8 @@ export default function SparklePop() {
           key={i}
           className="sparkle-pop absolute"
           style={{
-            left: '50%',
-            top: '50%',
+            left: "50%",
+            top: "50%",
             transform: `translate(-50%, -50%) rotate(${i * 45}deg)`,
             animationDelay: `${i * 0.05}s`,
           }}

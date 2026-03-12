@@ -1,4 +1,4 @@
-import { Heart } from 'lucide-react';
+import { Heart } from "lucide-react";
 
 export default function FloatingHeartsBackground() {
   const hearts = Array.from({ length: 12 }, (_, i) => i);
